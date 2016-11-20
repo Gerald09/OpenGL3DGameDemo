@@ -19,8 +19,8 @@ import java.util.List;
 
 public class Loader {
 
-    public static final int TEXTURE_COORDS_INDEX = 0;
-    public static final int VERTEX_INDEX = 1;
+    public static final int VERTEX_INDEX = 0;
+    public static final int TEXTURE_COORDS_INDEX = 1;
 
     private List<Integer> vaos = new ArrayList<Integer>();
     private List<Integer> vbos = new ArrayList<Integer>();
