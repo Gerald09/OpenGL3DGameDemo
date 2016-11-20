@@ -4,6 +4,7 @@ import com.thinmatrix.opengl3dgamedemo.renderengine.DisplayManager;
 import com.thinmatrix.opengl3dgamedemo.renderengine.Loader;
 import com.thinmatrix.opengl3dgamedemo.renderengine.RawModel;
 import com.thinmatrix.opengl3dgamedemo.renderengine.Renderer;
+import com.thinmatrix.opengl3dgamedemo.shader.StaticShader;
 
 import org.lwjgl.opengl.Display;
 
@@ -13,6 +14,7 @@ public class Main {
         DisplayManager.createDisplay();
         Loader loader = new Loader();
         Renderer renderer = new Renderer();
+        StaticShader staticShader = new StaticShader();
 
         float[] vertices = {
                 -0.5f, 0.5f, 0f,
@@ -30,11 +32,14 @@ public class Main {
 
         while (!Display.isCloseRequested()) {
             renderer.prepare();
-            // game logic
+            staticShader.start();
             renderer.render(model);
+            staticShader.stop();
+
             DisplayManager.updateDisplay();
         }
 
+        staticShader.cleanUp();
         loader.cleanUp();
 
         DisplayManager.closeDisplay();
