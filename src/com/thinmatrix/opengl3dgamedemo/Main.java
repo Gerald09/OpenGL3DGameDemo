@@ -1,5 +1,6 @@
 package com.thinmatrix.opengl3dgamedemo;
 
+import com.thinmatrix.opengl3dgamedemo.entities.Entity;
 import com.thinmatrix.opengl3dgamedemo.models.TextureModel;
 import com.thinmatrix.opengl3dgamedemo.renderengine.DisplayManager;
 import com.thinmatrix.opengl3dgamedemo.renderengine.Loader;
@@ -9,6 +10,7 @@ import com.thinmatrix.opengl3dgamedemo.shader.StaticShader;
 import com.thinmatrix.opengl3dgamedemo.textures.ModelTexture;
 
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
 
 public class Main {
 
@@ -41,13 +43,17 @@ public class Main {
         };
 
         RawModel model = loader.loadToVao(vertices, textureCoords, indices);
-        ModelTexture texture = new ModelTexture(loader.loadTexture("facebook-256"));
+        ModelTexture texture = new ModelTexture(loader.loadTexture("dog0"));
         TextureModel textureModel = new TextureModel(model, texture);
 
+        Entity entity = new Entity(textureModel, new Vector3f(0, 0, 0), 0, 0, 0, 1);
+
         while (!Display.isCloseRequested()) {
+//            entity.increasePosition(0.002f, 0, 0);
+//            entity.increaseRotation(0, 0, 360f);
             renderer.prepare();
             staticShader.start();
-            renderer.render(textureModel);
+            renderer.render(entity, staticShader);
             staticShader.stop();
 
             DisplayManager.updateDisplay();
