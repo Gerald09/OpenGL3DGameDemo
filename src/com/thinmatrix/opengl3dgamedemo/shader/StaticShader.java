@@ -1,5 +1,7 @@
 package com.thinmatrix.opengl3dgamedemo.shader;
 
+import com.thinmatrix.opengl3dgamedemo.renderengine.Loader;
+
 public class StaticShader extends ShaderProgram {
 
     private static final String VERTEX_FILE = "src/shaders/vertexShader";
@@ -11,6 +13,7 @@ public class StaticShader extends ShaderProgram {
 
     @Override
     protected void bindAttributes() {
-        bindAttribute(0, "position");
+        bindAttribute(Loader.VERTEX_INDEX, "position");
+        bindAttribute(Loader.TEXTURE_COORDS_INDEX, "textureCoords");
     }
 }

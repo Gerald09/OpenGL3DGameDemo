@@ -1,4 +1,4 @@
-package com.thinmatrix.opengl3dgamedemo.renderengine;
+package com.thinmatrix.opengl3dgamedemo.models;
 
 public class RawModel {
     private int vaoId;
