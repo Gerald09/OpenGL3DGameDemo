@@ -15,17 +15,18 @@ public class Main {
         Renderer renderer = new Renderer();
 
         float[] vertices = {
-                // left bottom triangle
                 -0.5f, 0.5f, 0f,
                 -0.5f, -0.5f, 0f,
                 0.5f, -0.5f, 0f,
-                // right top triangle
-                0.5f, -0.5f, 0f,
                 0.5f, 0.5f, 0f,
-                -0.5f, 0.5f, 0f
         };
 
-        RawModel model = loader.loadToVao(vertices);
+        int[] indices = {
+                0, 1, 3,
+                3, 1, 2
+        };
+
+        RawModel model = loader.loadToVao(vertices, indices);
 
         while (!Display.isCloseRequested()) {
             renderer.prepare();
@@ -33,6 +34,8 @@ public class Main {
             renderer.render(model);
             DisplayManager.updateDisplay();
         }
+
+        loader.cleanUp();
 
         DisplayManager.closeDisplay();
     }
