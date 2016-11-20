@@ -17,8 +17,8 @@ public class Main {
     public static void main(String[] args) {
         DisplayManager.createDisplay();
         Loader loader = new Loader();
-        Renderer renderer = new Renderer();
         StaticShader staticShader = new StaticShader();
+        Renderer renderer = new Renderer(staticShader);
 
         // 顶点坐标
         float[] vertices = {
@@ -46,10 +46,10 @@ public class Main {
         ModelTexture texture = new ModelTexture(loader.loadTexture("dog0"));
         TextureModel textureModel = new TextureModel(model, texture);
 
-        Entity entity = new Entity(textureModel, new Vector3f(0, 0, 0), 0, 0, 0, 1);
+        Entity entity = new Entity(textureModel, new Vector3f(0, 0, -0.2f), 0, 0, 0, 1);
 
         while (!Display.isCloseRequested()) {
-//            entity.increasePosition(0.002f, 0, 0);
+            entity.increasePosition(0, 0, -0.0001f);
 //            entity.increaseRotation(0, 0, 360f);
             renderer.prepare();
             staticShader.start();
