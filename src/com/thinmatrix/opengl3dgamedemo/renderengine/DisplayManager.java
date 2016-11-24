@@ -9,8 +9,8 @@ import org.lwjgl.opengl.PixelFormat;
 
 public class DisplayManager {
 
-    private static final int WIDTH = 512;
-    private static final int HEIGHT = 512;
+    private static final int WIDTH = 1280;
+    private static final int HEIGHT = 720;
 
     private static final int FPS = 60;
 
